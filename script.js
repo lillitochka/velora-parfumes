@@ -1,539 +1,331 @@
 
-// VELORA — каталог ароматов
-// Цены ориентировочные, в гривнах.
-// Фотографии должны лежать в корне репозитория GitHub.
-
 const TELEGRAM_USERNAME = "YOUR_TELEGRAM_USERNAME";
-// Позже укажи username своего Telegram без @
 
-const products = [
-  {
-    id: 1,
-    brand: "DIOR",
-    name: "Miss Dior Blooming Bouquet",
-    description: "Нежный цветочный аромат",
-    price: 8000,
-    category: "floral",
-    tag: "BESTSELLER",
-    image: "IMG_7465.jpeg"
-  },
-  {
-    id: 2,
-    brand: "LATTAFA",
-    name: "Yara",
-    description: "Мягкий сладкий аромат",
-    price: 1000,
-    category: "sweet",
-    tag: "POPULAR",
-    image: "IMG_7466.jpeg"
-  },
-  {
-    id: 3,
-    brand: "SABRINA CARPENTER",
-    name: "Sweet Tooth",
-    description: "Сладкий гурманский аромат",
-    price: 1650,
-    category: "sweet",
-    tag: "FAVORITE",
-    image: "IMG_7467.jpeg"
-  },
-  {
-    id: 4,
-    brand: "SABRINA CARPENTER",
-    name: "Caramel Dream",
-    description: "Тёплый карамельный аромат",
-    price: 1650,
-    category: "sweet",
-    tag: "SWEET",
-    image: "IMG_7469.jpeg"
-  },
-  {
-    id: 5,
-    brand: "SABRINA CARPENTER",
-    name: "Lemon Pie",
-    description: "Сладкий аромат с лимонными нотами",
-    price: 1650,
-    category: "fresh",
-    tag: "FRESH",
-    image: "IMG_7470.jpeg"
-  },
-  {
-    id: 6,
-    brand: "SABRINA CARPENTER",
-    name: "Caramel Dream",
-    description: "Нежный сладкий аромат",
-    price: 1650,
-    category: "sweet",
-    tag: "SWEET",
-    image: "IMG_7471.jpeg"
-  },
-  {
-    id: 7,
-    brand: "SABRINA CARPENTER",
-    name: "Me Espresso",
-    description: "Насыщенный кофейный аромат",
-    price: 1650,
-    category: "sweet",
-    tag: "COZY",
-    image: "IMG_7472.jpeg"
-  },
-  {
-    id: 8,
-    brand: "ARIANA GRANDE",
-    name: "Cloud",
-    description: "Мягкий воздушный аромат",
-    price: 2500,
-    category: "sweet",
-    tag: "POPULAR",
-    image: "IMG_7474.jpeg"
-  },
-  {
-    id: 9,
-    brand: "MOSCHINO",
-    name: "Toy 2 Bubble Gum",
-    description: "Яркий сладкий аромат",
-    price: 3000,
-    category: "sweet",
-    tag: "PLAYFUL",
-    image: "IMG_7476.jpeg"
-  },
-  {
-    id: 10,
-    brand: "MOSCHINO",
-    name: "Toy 2",
-    description: "Свежий цветочный аромат",
-    price: 3000,
-    category: "fresh",
-    tag: "ELEGANT",
-    image: "IMG_7477.jpeg"
-  },
-  {
-    id: 11,
-    brand: "CAROLINA HERRERA",
-    name: "Good Girl",
-    description: "Выразительный женственный аромат",
-    price: 4800,
-    category: "sweet",
-    tag: "ICONIC",
-    image: "IMG_7478.jpeg"
-  },
-  {
-    id: 12,
-    brand: "CAROLINA HERRERA",
-    name: "Good Girl",
-    description: "Сладкий и чувственный аромат",
-    price: 2950,
-    category: "sweet",
-    tag: "FAVORITE",
-    image: "IMG_7479.jpeg"
-  },
-  {
-    id: 13,
-    brand: "CAROLINA HERRERA",
-    name: "Good Girl",
-    description: "Глубокий выразительный аромат",
-    price: 2950,
-    category: "sweet",
-    tag: "ICONIC",
-    image: "IMG_7480.jpeg"
-  },
-  {
-    id: 14,
-    brand: "CHANEL",
-    name: "Chance Eau Tendre",
-    description: "Лёгкий фруктово-цветочный аромат",
-    price: 5000,
-    category: "floral",
-    tag: "ELEGANT",
-    image: "IMG_7483.jpeg"
-  },
-  {
-    id: 15,
-    brand: "CHANEL",
-    name: "Chance Eau Fraîche",
-    description: "Свежий цитрусовый аромат",
-    price: 4000,
-    category: "fresh",
-    tag: "FRESH",
-    image: "IMG_7484.jpeg"
-  },
-  {
-    id: 16,
-    brand: "SOL DE JANEIRO",
-    name: "Cheirosa 68",
-    description: "Яркий фруктово-цветочный аромат",
-    price: 1300,
-    category: "floral",
-    tag: "MIST",
-    image: "IMG_7485.jpeg"
-  },
-  {
-    id: 17,
-    brand: "SOL DE JANEIRO",
-    name: "Cheirosa 59",
-    description: "Мягкий сладкий аромат",
-    price: 1300,
-    category: "sweet",
-    tag: "MIST",
-    image: "IMG_7486.jpeg"
-  },
-  {
-    id: 18,
-    brand: "SOL DE JANEIRO",
-    name: "Cheirosa 48",
-    description: "Сочный фруктовый аромат",
-    price: 1300,
-    category: "sweet",
-    tag: "MIST",
-    image: "IMG_7487.jpeg"
-  },
-  {
-    id: 19,
-    brand: "SOL DE JANEIRO",
-    name: "Cheirosa 62",
-    description: "Тёплый карамельно-ореховый аромат",
-    price: 1300,
-    category: "sweet",
-    tag: "BESTSELLER",
-    image: "IMG_7488.jpeg"
-  },
-  {
-    id: 20,
-    brand: "SOL DE JANEIRO",
-    name: "Cheirosa 71",
-    description: "Сладкий гурманский аромат",
-    price: 1300,
-    category: "sweet",
-    tag: "MIST",
-    image: "IMG_7489.jpeg"
-  },
-  {
-    id: 21,
-    brand: "SOL DE JANEIRO",
-    name: "Cheirosa 76",
-    description: "Тёплый вечерний аромат",
-    price: 1300,
-    category: "sweet",
-    tag: "MIST",
-    image: "IMG_7490.jpeg"
-  },
-  {
-    id: 22,
-    brand: "VALENTINO",
-    name: "Valentino",
-    description: "Женственный выразительный аромат",
-    price: 4500,
-    category: "floral",
-    tag: "ELEGANT",
-    image: "IMG_7492.jpeg"
-  },
-  {
-    id: 23,
-    brand: "VALENTINO",
-    name: "Valentino",
-    description: "Насыщенный тёплый аромат",
-    price: 4500,
-    category: "sweet",
-    tag: "EXCLUSIVE",
-    image: "IMG_7493.jpeg"
-  },
-  {
-    id: 24,
-    brand: "MAISON FRANCIS KURKDJIAN",
-    name: "Baccarat Rouge 540",
-    description: "Узнаваемый насыщенный аромат",
-    price: 15000,
-    category: "sweet",
-    tag: "LUXURY",
-    image: "IMG_7495.jpeg"
-  },
-  {
-    id: 25,
-    brand: "MAISON FRANCIS KURKDJIAN",
-    name: "Baccarat Rouge 540 Extrait",
-    description: "Глубокий и насыщенный аромат",
-    price: 17900,
-    category: "sweet",
-    tag: "EXCLUSIVE",
-    image: "IMG_7496.jpeg"
-  },
-  {
-    id: 26,
-    brand: "LATTAFA",
-    name: "24 Carat White Gold",
-    description: "Тёплый восточный аромат",
-    price: 1050,
-    category: "sweet",
-    tag: "ORIENTAL",
-    image: "IMG_7498.jpeg"
-  },
-  {
-    id: 27,
-    brand: "ATTAR COLLECTION",
-    name: "Crystal Love Her",
-    description: "Сладкий женственный аромат",
-    price: 4100,
-    category: "sweet",
-    tag: "LUXURY",
-    image: "IMG_7499.jpeg"
-  },
-  {
-    id: 28,
-    brand: "LATTAFA",
-    name: "Hayaati",
-    description: "Восточный аромат",
-    price: 925,
-    category: "sweet",
-    tag: "POPULAR",
-    image: "IMG_7500.jpeg"
-  },
-  {
-    id: 29,
-    brand: "BILLIE EILISH",
-    name: "Eilish",
-    description: "Тёплый ванильно-гурманский аромат",
-    price: 1850,
-    category: "sweet",
-    tag: "FAVORITE",
-    image: "IMG_7501.jpeg"
-  },
-  {
-    id: 30,
-    brand: "YVES SAINT LAURENT",
-    name: "Libre Eau de Parfum",
-    description: "Элегантный цветочный аромат",
-    price: 3650,
-    category: "floral",
-    tag: "ICONIC",
-    image: "IMG_7502.jpeg"
-  },
-  {
-    id: 31,
-    brand: "TOM FORD",
-    name: "Lost Cherry",
-    description: "Насыщенный вишнёвый аромат",
-    price: 7000,
-    category: "sweet",
-    tag: "LUXURY",
-    image: "IMG_7503.jpeg"
-  },
-  {
-    id: 32,
-    brand: "VICTORIA'S SECRET",
-    name: "Pure Seduction",
-    description: "Сладкий фруктовый мист",
-    price: 600,
-    category: "sweet",
-    tag: "MIST",
-    image: "IMG_7504.jpeg"
-  }
+// id, brand, name, description, price, category, tag, image
+const rawProducts = [
+[1,"DIOR","Miss Dior Blooming Bouquet","Нежный цветочный аромат",8000,"floral","BESTSELLER","IMG_7465.jpeg"],
+[2,"LATTAFA","Yara","Мягкий сладкий аромат",1000,"sweet","POPULAR","IMG_7466.jpeg"],
+[3,"SABRINA CARPENTER","Sweet Tooth","Сладкий гурманский аромат",1650,"sweet","FAVORITE","IMG_7467.jpeg"],
+[4,"SABRINA CARPENTER","Caramel Dream","Тёплый карамельный аромат",1650,"sweet","SWEET","IMG_7469.jpeg"],
+[5,"SABRINA CARPENTER","Lemon Pie","Сладкий аромат з лимонними нотами",1650,"fresh","FRESH","IMG_7470.jpeg"],
+[6,"SABRINA CARPENTER","Caramel Dream","Ніжний солодкий аромат",1650,"sweet","SWEET","IMG_7471.jpeg"],
+[7,"SABRINA CARPENTER","Me Espresso","Насичений кавовий аромат",1650,"sweet","COZY","IMG_7472.jpeg"],
+[8,"ARIANA GRANDE","Cloud","Мягкий воздушный аромат",2500,"sweet","POPULAR","IMG_7474.jpeg"],
+[9,"MOSCHINO","Toy 2 Bubble Gum","Яркий сладкий аромат",3000,"sweet","PLAYFUL","IMG_7476.jpeg"],
+[10,"MOSCHINO","Toy 2","Свежий цветочный аромат",3000,"fresh","ELEGANT","IMG_7477.jpeg"],
+[11,"CAROLINA HERRERA","Good Girl","Выразительный женственный аромат",4800,"sweet","ICONIC","IMG_7478.jpeg"],
+[12,"CAROLINA HERRERA","Good Girl","Сладкий и чувственный аромат",2950,"sweet","FAVORITE","IMG_7479.jpeg"],
+[13,"CAROLINA HERRERA","Good Girl","Глубокий выразительный аромат",2950,"sweet","ICONIC","IMG_7480.jpeg"],
+[14,"CHANEL","Chance Eau Tendre","Лёгкий фруктово-цветочный аромат",5000,"floral","ELEGANT","IMG_7483.jpeg"],
+[15,"CHANEL","Chance Eau Fraîche","Свежий цитрусовый аромат",4000,"fresh","FRESH","IMG_7484.jpeg"],
+[16,"SOL DE JANEIRO","Cheirosa 68","Яркий фруктово-цветочный аромат",1300,"floral","MIST","IMG_7485.jpeg"],
+[17,"SOL DE JANEIRO","Cheirosa 59","Мягкий сладкий аромат",1300,"sweet","MIST","IMG_7486.jpeg"],
+[18,"SOL DE JANEIRO","Cheirosa 48","Сочный фруктовый аромат",1300,"sweet","MIST","IMG_7487.jpeg"],
+[19,"SOL DE JANEIRO","Cheirosa 62","Тёплый карамельно-ореховый аромат",1300,"sweet","BESTSELLER","IMG_7488.jpeg"],
+[20,"SOL DE JANEIRO","Cheirosa 71","Сладкий гурманский аромат",1300,"sweet","MIST","IMG_7489.jpeg"],
+[21,"SOL DE JANEIRO","Cheirosa 76","Тёплый вечерний аромат",1300,"sweet","MIST","IMG_7490.jpeg"],
+[22,"VALENTINO","Valentino","Женственный выразительный аромат",4500,"floral","ELEGANT","IMG_7492.jpeg"],
+[23,"VALENTINO","Valentino","Насыщенный тёплый аромат",4500,"sweet","EXCLUSIVE","IMG_7493.jpeg"],
+[24,"MAISON FRANCIS KURKDJIAN","Baccarat Rouge 540","Узнаваемый насыщенный аромат",15000,"sweet","LUXURY","IMG_7495.jpeg"],
+[25,"MAISON FRANCIS KURKDJIAN","Baccarat Rouge 540 Extrait","Глубокий и насыщенный аромат",17900,"sweet","EXCLUSIVE","IMG_7496.jpeg"],
+[26,"LATTAFA","24 Carat White Gold","Тёплый восточный аромат",1050,"sweet","ORIENTAL","IMG_7498.jpeg"],
+[27,"ATTAR COLLECTION","Crystal Love Her","Сладкий женственный аромат",4100,"sweet","LUXURY","IMG_7499.jpeg"],
+[28,"LATTAFA","Hayaati","Восточный аромат",925,"sweet","POPULAR","IMG_7500.jpeg"],
+[29,"BILLIE EILISH","Eilish","Тёплый ванильно-гурманский аромат",1850,"sweet","FAVORITE","IMG_7501.jpeg"],
+[30,"YVES SAINT LAURENT","Libre Eau de Parfum","Элегантный цветочный аромат",3650,"floral","ICONIC","IMG_7502.jpeg"],
+[31,"TOM FORD","Lost Cherry","Насыщенный вишнёвый аромат",7000,"sweet","LUXURY","IMG_7503.jpeg"],
+[32,"VICTORIA'S SECRET","Pure Seduction","Сладкий фруктовый мист",600,"sweet","MIST","IMG_7504.jpeg"]
 ];
 
+const products = rawProducts.map(p => ({
+  id:p[0], brand:p[1], name:p[2], description:p[3],
+  price:p[4], category:p[5], tag:p[6], image:p[7]
+}));
+
+// Временные ориентировочные цены для демонстрации.
+// Перед публикацией замени их на подтверждённые цены
+// и реальные доступные объёмы каждого товара.
+function getSizes(product) {
+  return [
+    {ml:30,price:Math.round(product.price*.55)},
+    {ml:50,price:Math.round(product.price*.78)},
+    {ml:100,price:product.price}
+  ];
+}
+
+const sabrinaIds = [3,4,5,6,7];
+
 let cart = [];
+let selectedProduct = null;
+let selectedSize = null;
+let currentPhoto = 0;
 
-const grid = document.getElementById("productGrid");
-const cartDrawer = document.getElementById("cartDrawer");
-const overlay = document.getElementById("overlay");
-const orderModal = document.getElementById("orderModal");
-const toast = document.getElementById("toast");
-
-// ЦЕНЫ
+const $ = id => document.getElementById(id);
+const grid = $("productGrid");
+const overlay = $("overlay");
+const cartDrawer = $("cartDrawer");
+const productModal = $("productModal");
+const orderModal = $("orderModal");
 
 function money(value) {
-  return new Intl.NumberFormat("uk-UA").format(value) + " ₴";
+  return new Intl.NumberFormat("uk-UA").format(value)+" ₴";
+}
+
+function showToast(message) {
+  const toast = $("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(()=>toast.classList.remove("show"),2400);
+}
+
+// П'ЯТЬ ФОТОГРАФІЙ SABRINA CARPENTER
+function getGallery(product) {
+  if (sabrinaIds.includes(product.id)) {
+    return sabrinaIds.map(id => products.find(p=>p.id===id).image);
+  }
+  return [product.image];
 }
 
 // КАТАЛОГ
-
-function renderProducts(filter = "all") {
-  const shown = filter === "all"
+function renderProducts(filter="all") {
+  const shown = filter==="all"
     ? products
-    : products.filter(p => p.category === filter);
+    : products.filter(p=>p.category===filter);
 
-  grid.innerHTML = shown.map(p => `
-    <article class="product-card">
+  grid.innerHTML = shown.map(p=>`
+    <article class="product-card" data-open="${p.id}">
       <div class="product-photo">
-        <img
-          src="${p.image}"
-          alt="${p.brand} ${p.name}"
-          loading="lazy"
-        >
+        <img src="${p.image}" alt="${p.brand} ${p.name}" loading="lazy">
         <span class="product-tag">${p.tag}</span>
       </div>
-
       <div class="product-info">
         <p class="product-brand">${p.brand}</p>
         <h3 class="product-name">${p.name}</h3>
         <p class="product-description">${p.description}</p>
-
         <div class="product-bottom">
-          <span class="price">${money(p.price)}</span>
-          <button
-            class="add-button"
-            data-add="${p.id}"
-            aria-label="Додати ${p.name} до кошика"
-          >+</button>
+          <span class="price">Від ${money(getSizes(p)[0].price)}</span>
+          <button class="add-button" data-add="${p.id}" aria-label="Переглянути товар">+</button>
         </div>
       </div>
     </article>
   `).join("");
 }
 
-// ПОВІДОМЛЕННЯ
+// ВІДКРИТТЯ ТОВАРУ
+function openProduct(id) {
+  const product = products.find(p=>p.id===id);
+  if(!product) return;
 
-function showToast(message) {
-  toast.textContent = message;
-  toast.classList.add("show");
+  selectedProduct = product;
+  selectedSize = getSizes(product)[0];
+  currentPhoto = 0;
 
-  clearTimeout(showToast.timer);
-
-  showToast.timer = setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2200);
+  renderProductDetails();
+  productModal.classList.add("show");
+  overlay.classList.add("show");
 }
 
-// ДОДАВАННЯ В КОШИК
+function renderProductDetails() {
+  const p = selectedProduct;
+  const gallery = getGallery(p);
 
-function addToCart(id) {
-  const product = products.find(p => p.id === id);
-  if (!product) return;
+  $("productDetails").innerHTML = `
+    <div class="product-detail-layout">
+      <div>
+        <div class="detail-main-image">
+          <img id="detailMainImage" src="${gallery[currentPhoto]}" alt="${p.name}">
+        </div>
+        <div class="detail-thumbs">
+          ${gallery.map((img,i)=>`
+            <button class="detail-thumb ${i===currentPhoto?"active":""}" data-photo="${i}">
+              <img src="${img}" alt="Фото ${i+1}">
+            </button>
+          `).join("")}
+        </div>
+        ${sabrinaIds.includes(p.id)?`
+          <p class="detail-description">Колекція Sabrina Carpenter — оберіть свій аромат серед п'яти варіантів.</p>
+        `:""}
+      </div>
 
-  const item = cart.find(p => p.id === id);
+      <div>
+        <p class="detail-brand">${p.brand}</p>
+        <h2 class="detail-title">${p.name}</h2>
+        <p class="detail-description">${p.description}</p>
 
-  if (item) {
-    item.qty++;
-  } else {
-    cart.push({ ...product, qty: 1 });
-  }
+        <p class="detail-label">ОБЕРІТЬ ОБ'ЄМ</p>
+        <div class="size-options">
+          ${getSizes(p).map(s=>`
+            <button class="size-option ${s.ml===selectedSize.ml?"active":""}" data-size="${s.ml}">
+              ${s.ml} мл
+            </button>
+          `).join("")}
+        </div>
+
+        <p class="detail-price" id="detailPrice">${money(selectedSize.price)}</p>
+
+        <button class="button button-dark detail-add" id="detailAdd">
+          ДОДАТИ ДО КОШИКА ↗
+        </button>
+
+        <div class="reviews">
+          <h3>Відгуки покупців</h3>
+          <div class="review">
+            <div class="review-stars">★★★★★</div>
+            <strong>Олена</strong>
+            <p>Дуже приємний аромат. Гарне враження від вибору!</p>
+          </div>
+          <div class="review">
+            <div class="review-stars">★★★★★</div>
+            <strong>Марія</strong>
+            <p>Саме той аромат, який хотілося знайти.</p>
+          </div>
+          <div class="review">
+            <div class="review-stars">★★★★★</div>
+            <strong>Анна</strong>
+            <p>Дуже подобається аромат, із задоволенням обрала б ще раз.</p>
+          </div>
+          <p class="detail-description">Демонстраційні відгуки — замініть на реальні відгуки покупців.</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// КОШИК
+function addToCart(id, size) {
+  const product = products.find(p=>p.id===id);
+  if(!product || !size) return;
+
+  const existing = cart.find(item=>item.id===id && item.ml===size.ml);
+
+  if(existing) existing.qty++;
+  else cart.push({...product,ml:size.ml,price:size.price,qty:1});
 
   renderCart();
   showToast("Аромат додано до кошика");
 }
 
-// КОШИК
-
 function renderCart() {
-  const count = cart.reduce((sum, p) => sum + p.qty, 0);
-  const total = cart.reduce((sum, p) => sum + p.price * p.qty, 0);
+  const count = cart.reduce((s,p)=>s+p.qty,0);
+  const total = cart.reduce((s,p)=>s+p.price*p.qty,0);
 
-  document.getElementById("cartCount").textContent = count;
-  document.getElementById("cartTotal").textContent = money(total);
+  $("cartCount").textContent = count;
+  $("cartTotal").textContent = money(total);
 
-  const items = document.getElementById("cartItems");
-
-  if (!cart.length) {
-    items.innerHTML = `
-      <p class="empty-cart">
-        Тут поки порожньо. Час знайти свій аромат
-      </p>
-    `;
+  if(!cart.length) {
+    $("cartItems").innerHTML='<p class="empty-cart">Тут поки порожньо.</p>';
     return;
   }
 
-  items.innerHTML = cart.map(p => `
+  $("cartItems").innerHTML = cart.map(p=>`
     <div class="cart-row">
       <img src="${p.image}" alt="${p.name}">
-
       <div>
         <h4>${p.name}</h4>
-        <p>${p.qty} × ${money(p.price)}</p>
+        <p>${p.ml} мл · ${p.qty} × ${money(p.price)}</p>
+        <p>${money(p.price*p.qty)}</p>
       </div>
-
-      <button
-        class="remove-item"
-        data-remove="${p.id}"
-        aria-label="Видалити товар"
-      >×</button>
+      <button class="remove-item" data-remove="${p.id}" data-ml="${p.ml}">×</button>
     </div>
   `).join("");
 }
 
-// ВІДКРИТТЯ ТА ЗАКРИТТЯ
+function closePanels() {
+  cartDrawer.classList.remove("show");
+  productModal.classList.remove("show");
+  orderModal.classList.remove("show");
+  overlay.classList.remove("show");
+}
 
 function openCart() {
   cartDrawer.classList.add("show");
   overlay.classList.add("show");
 }
 
-function closePanels() {
-  cartDrawer.classList.remove("show");
-  orderModal.classList.remove("show");
-  overlay.classList.remove("show");
-}
-
-// КНОПКИ ТА ФІЛЬТРИ
-
-document.addEventListener("click", e => {
-  const add = e.target.closest("[data-add]");
-
-  if (add) {
-    addToCart(Number(add.dataset.add));
+// УСІ КЛІКИ
+document.addEventListener("click",e=>{
+  const add=e.target.closest("[data-add]");
+  if(add) {
+    const p=products.find(x=>x.id===Number(add.dataset.add));
+    if(p) openProduct(p.id);
+    return;
   }
 
-  const remove = e.target.closest("[data-remove]");
+  const card=e.target.closest("[data-open]");
+  if(card) {
+    openProduct(Number(card.dataset.open));
+    return;
+  }
 
-  if (remove) {
-    cart = cart.filter(
-      p => p.id !== Number(remove.dataset.remove)
-    );
+  const photo=e.target.closest("[data-photo]");
+  if(photo) {
+    currentPhoto=Number(photo.dataset.photo);
+    renderProductDetails();
+    return;
+  }
+
+  const size=e.target.closest("[data-size]");
+  if(size) {
+    selectedSize=getSizes(selectedProduct).find(s=>s.ml===Number(size.dataset.size));
+    renderProductDetails();
+    return;
+  }
+
+  const remove=e.target.closest("[data-remove]");
+  if(remove) {
+    cart=cart.filter(p=>!(p.id===Number(remove.dataset.remove)&&p.ml===Number(remove.dataset.ml)));
     renderCart();
+    return;
   }
 
-  const filter = e.target.closest("[data-filter]");
-
-  if (filter) {
-    document.querySelectorAll(".filter").forEach(button => {
-      button.classList.remove("active");
-    });
-
+  const filter=e.target.closest("[data-filter]");
+  if(filter) {
+    document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
     filter.classList.add("active");
     renderProducts(filter.dataset.filter);
   }
 });
 
-// КНОПКА КОШИКА
+// ДОДАВАННЯ З КАРТКИ
+$("productDetails").addEventListener("click",e=>{
+  if(e.target.closest("#detailAdd")) {
+    addToCart(selectedProduct.id,selectedSize);
+    closePanels();
+  }
+});
 
-document.getElementById("openCart")
-  .addEventListener("click", openCart);
+// КНОПКИ
+$("openCart").addEventListener("click",openCart);
+$("closeCart").addEventListener("click",closePanels);
+$("closeProduct").addEventListener("click",closePanels);
+$("closeModal").addEventListener("click",closePanels);
+overlay.addEventListener("click",closePanels);
 
-document.getElementById("closeCart")
-  .addEventListener("click", closePanels);
-
-overlay.addEventListener("click", closePanels);
-
-// ОФОРМЛЕННЯ ЗАМОВЛЕННЯ
-
-document.getElementById("checkout").addEventListener("click", () => {
-  if (!cart.length) {
-    showToast("Спочатку додайте аромат до кошика");
+$("checkout").addEventListener("click",()=>{
+  if(!cart.length) {
+    showToast("Спочатку оберіть аромат");
     return;
   }
-
   cartDrawer.classList.remove("show");
   orderModal.classList.add("show");
   overlay.classList.add("show");
 });
 
-document.getElementById("closeModal")
-  .addEventListener("click", closePanels);
-
-// ВІДПРАВЛЕННЯ ЗАМОВЛЕННЯ
-
-document.getElementById("orderForm").addEventListener("submit", e => {
+// ЗАМОВЛЕННЯ
+$("orderForm").addEventListener("submit",e=>{
   e.preventDefault();
 
-  const data = new FormData(e.currentTarget);
+  if(!cart.length) return;
 
-  const lines = cart.map(p =>
-    `• ${p.brand} — ${p.name} — ${p.qty} шт. (${money(p.price * p.qty)})`
+  const data=new FormData(e.currentTarget);
+  const lines=cart.map(p=>
+    `• ${p.brand} — ${p.name} — ${p.ml} мл — ${p.qty} шт. — ${money(p.price*p.qty)}`
   ).join("\n");
 
-  const total = cart.reduce(
-    (sum, p) => sum + p.price * p.qty,
-    0
-  );
+  const total=cart.reduce((s,p)=>s+p.price*p.qty,0);
 
-  const message = `
+  const message=`
 Замовлення з VELORA
 
 ${lines}
@@ -542,41 +334,35 @@ ${lines}
 
 Ім'я: ${data.get("name")}
 Телефон: ${data.get("phone")}
-Коментар: ${data.get("comment") || "—"}
+Коментар: ${data.get("comment")||"—"}
   `.trim();
 
-  if (TELEGRAM_USERNAME === "YOUR_TELEGRAM_USERNAME") {
-    if (navigator.clipboard?.writeText) {
+  if(TELEGRAM_USERNAME==="YOUR_TELEGRAM_USERNAME") {
+    if(navigator.clipboard?.writeText) {
       navigator.clipboard.writeText(message)
-        .then(() => showToast("Текст замовлення скопійовано"))
-        .catch(() => showToast("Не вдалося скопіювати замовлення"));
+        .then(()=>showToast("Замовлення скопійовано"))
+        .catch(()=>showToast("Не вдалося скопіювати"));
     } else {
       showToast("Додай Telegram username у script.js");
     }
-
     return;
   }
 
-  const url =
-    `https://t.me/${TELEGRAM_USERNAME.replace("@", "")}` +
-    `?text=${encodeURIComponent(message)}`;
-
-  window.open(url, "_blank");
+  window.open(
+    `https://t.me/${TELEGRAM_USERNAME.replace("@","")}?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
 });
 
 // МОБІЛЬНЕ МЕНЮ
-
-document.getElementById("menuToggle").addEventListener("click", () => {
-  document.getElementById("nav").classList.toggle("open");
+$("menuToggle").addEventListener("click",()=>{
+  $("nav").classList.toggle("open");
 });
 
-document.querySelectorAll(".nav a").forEach(link => {
-  link.addEventListener("click", () => {
-    document.getElementById("nav").classList.remove("open");
-  });
+document.querySelectorAll(".nav a").forEach(a=>{
+  a.addEventListener("click",()=>$("nav").classList.remove("open"));
 });
 
-// ЗАПУСК
-
+// СТАРТ
 renderProducts();
 renderCart();
