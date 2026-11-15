@@ -1,41 +1,46 @@
+const products = [
+ {id:1,name:"Rose Water Cleanser",category:"skincare",categoryName:"Догляд",description:"Ніжне очищення для щоденного ритуалу.",price:390,image:"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=80",tag:"BESTSELLER"},
+ {id:2,name:"Velvet Lip Tint",category:"makeup",categoryName:"Макіяж",description:"Легкий відтінок і комфортне покриття.",price:320,image:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=700&q=80",tag:"NEW"},
+ {id:3,name:"Cloud Cream",category:"skincare",categoryName:"Догляд",description:"Комфортний крем для м’якого зволоження.",price:560,image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=80",tag:"DAILY CARE"},
+ {id:4,name:"Petal Eau de Parfum",category:"fragrance",categoryName:"Парфумерія",description:"Ніжний квітковий настрій на кожен день.",price:890,image:"https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=80",tag:"EDITOR'S PICK"},
+ {id:5,name:"Blush Touch",category:"makeup",categoryName:"Макіяж",description:"Природний рум’янець із делікатним сяйвом.",price:450,image:"https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=700&q=80",tag:"SOFT GLOW"},
+ {id:6,name:"Silk Hair Elixir",category:"skincare",categoryName:"Догляд",description:"Доглядовий еліксир для гладкості волосся.",price:490,image:"https://images.unsplash.com/photo-1600612253971-422e7f7faeb6?auto=format&fit=crop&w=700&q=80",tag:"SELF-CARE"}
+];
+let cart = [];
+let activeCategory = "all";
+const $ = id => document.getElementById(id);
+const money = n => `${n.toLocaleString("uk-UA")} ₴`;
 
-document.querySelectorAll(".photo-frame img").forEach((img) => {
-  const frame = img.closest(".photo-frame");
-  const fallback = frame.querySelector(".photo-fallback");
-
-  const showFallback = () => {
-    img.style.display = "none";
-    fallback.style.display = "grid";
-  };
-
-  if (img.complete && img.naturalWidth === 0) {
-    showFallback();
-  }
-
-  img.addEventListener("error", showFallback);
-
-  img.addEventListener("load", () => {
-    fallback.style.display = "none";
-  });
-});
-
-const revealItems = document.querySelectorAll(
-  ".letter-card, .photo-card, .you-card, .final-section"
-);
-
-if ("IntersectionObserver" in window) {
-  revealItems.forEach(item => {
-    item.classList.add("reveal");
-  });
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  revealItems.forEach(item => observer.observe(item));
+function renderProducts(){
+ const term = $("searchInput").value.trim().toLowerCase();
+ const shown = products.filter(p => (activeCategory==="all" || p.category===activeCategory) && (p.name.toLowerCase().includes(term) || p.description.toLowerCase().includes(term) || p.categoryName.toLowerCase().includes(term)));
+ $("productGrid").innerHTML = shown.length ? shown.map(p=>`
+  <article class="product-card">
+   <div class="product-photo"><img src="${p.image}" alt="${p.name}" loading="lazy"><span class="product-tag">${p.tag}</span></div>
+   <div class="product-info"><span class="product-category">${p.categoryName}</span><h3 class="product-name">${p.name}</h3><p class="product-description">${p.description}</p>
+    <div class="product-bottom"><span class="price">${money(p.price)}</span><button class="add-btn" data-add="${p.id}" aria-label="Додати ${p.name} до кошика">+</button></div>
+   </div>
+  </article>`).join("") : '<p class="empty-cart">Нічого не знайдено. Спробуй інший запит ♡</p>';
 }
+function renderCart(){
+ $("cartCount").textContent = cart.reduce((s,i)=>s+i.qty,0);
+ $("cartTotal").textContent = money(cart.reduce((s,i)=>s+i.price*i.qty,0));
+ $("cartItems").innerHTML = cart.length ? cart.map(i=>`
+  <div class="cart-row"><img src="${i.image}" alt=""><div><strong>${i.name}</strong><small>${money(i.price)}</small><div class="qty"><button data-minus="${i.id}" aria-label="Менше">−</button><span>${i.qty}</span><button data-plus="${i.id}" aria-label="Більше">+</button></div></div><button class="remove" data-remove="${i.id}">Видалити</button></div>`).join("") : '<p class="empty-cart">Тут поки затишно й порожньо ♡</p>';
+}
+function toast(message){const t=$("toast");t.textContent=message;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2100)}
+function openCart(){ $("cartPanel").classList.add("open");$("overlay").classList.add("show");$("cartPanel").setAttribute("aria-hidden","false");}
+function closeCart(){ $("cartPanel").classList.remove("open");$("overlay").classList.remove("show");$("cartPanel").setAttribute("aria-hidden","true");}
+$("productGrid").addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(!b)return;const p=products.find(x=>x.id===Number(b.dataset.add));const found=cart.find(x=>x.id===p.id);found?found.qty++:cart.push({...p,qty:1});renderCart();toast("Додано до кошика ♡")});
+$("cartItems").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const id=Number(b.dataset.plus||b.dataset.minus||b.dataset.remove);const item=cart.find(x=>x.id===id);if(!item)return;if(b.dataset.plus)item.qty++;else if(b.dataset.minus){item.qty--;if(item.qty<1)cart=cart.filter(x=>x.id!==id)}else cart=cart.filter(x=>x.id!==id);renderCart()});
+$("filters").addEventListener("click",e=>{const b=e.target.closest("[data-category]");if(!b)return;activeCategory=b.dataset.category;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));renderProducts()});
+$("searchInput").addEventListener("input",renderProducts);
+$("openCart").addEventListener("click",openCart);$("closeCart").addEventListener("click",closeCart);$("overlay").addEventListener("click",closeCart);
+$("menuToggle").addEventListener("click",()=>$("nav").classList.toggle("open"));
+$("nav").addEventListener("click",e=>{if(e.target.tagName==="A")$("nav").classList.remove("open")});
+$("checkoutBtn").addEventListener("click",()=>{if(!cart.length){toast("Спочатку додай товари до кошика");return}closeCart();$("checkoutModal").classList.add("show");$("checkoutModal").setAttribute("aria-hidden","false")});
+function closeModal(){$("checkoutModal").classList.remove("show");$("checkoutModal").setAttribute("aria-hidden","true")}
+$("closeModal").addEventListener("click",closeModal);
+$("checkoutModal").addEventListener("click",e=>{if(e.target===$("checkoutModal"))closeModal()});
+$("checkoutForm").addEventListener("submit",e=>{e.preventDefault();const data=new FormData(e.target);const name=data.get("name");const contact=data.get("contact");toast(`Дякуємо, ${name}! Це демо — заявку не надіслано.`);e.target.reset();closeModal();cart=[];renderCart();});
+renderProducts();renderCart();

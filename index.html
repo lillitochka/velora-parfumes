@@ -3,97 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#eaf5f7">
-  <meta name="description" content="Тепле привітання з днем народження для найдорожчого чоловіка.">
-  <title>З днем народження, коханий!</title>
+  <meta name="theme-color" content="#f7eeee">
+  <title>ROSELLE — Beauty Store</title>
+  <meta name="description" content="ROSELLE — косметика, догляд і парфумерія для твоїх щоденних ритуалів краси.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
-  <header class="topbar">
-    <a class="brand" href="#top" aria-label="На початок">для тебе <span>♡</span></a>
-    <a class="top-link" href="#moments">наші моменти</a>
+  <div class="announcement">ТВОЯ КРАСА — ТВОЯ ІСТОРІЯ · ВІТАЄМО В ROSELLE</div>
+  <header class="header">
+    <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Відкрити меню">☰</button>
+    <a class="wordmark" href="#">ROSELLE<span>BEAUTY STORE</span></a>
+    <nav class="nav" id="nav">
+      <a href="#catalog">Каталог</a><a href="#about">Про нас</a><a href="#benefits">Наші переваги</a>
+    </nav>
+    <button class="cart-trigger" id="openCart" aria-label="Відкрити кошик">Кошик <span id="cartCount">0</span></button>
   </header>
 
-  <main id="top">
-    <section class="hero section-shell">
-      <div class="hero-kicker"><span></span> сьогодні твій особливий день <span></span></div>
-      <p class="eyebrow">найріднішій людині</p>
-      <h1>З днем народження,<br><em>мій коханий!</em></h1>
-      <p class="hero-copy">Зая, нехай у твоєму житті буде якомога більше приводів для щирої усмішки, тепла й щастя.</p>
-      <a class="primary-button" href="#letter">прочитати привітання <span>↓</span></a>
-      <div class="hero-note"><span class="note-line"></span> з любов’ю, твоя сім’я</div>
-      <div class="hero-decoration decor-star">✳</div>
-      <div class="hero-decoration decor-heart">♡</div>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">BEAUTY THAT FEELS LIKE YOU</p>
+        <h1>Маленькі ритуали.<br><em>Велика любов</em> до себе.</h1>
+        <p class="hero-text">Косметика, догляд і аромати, які додають трішки магії у звичайні дні.</p>
+        <a class="primary-btn" href="#catalog">Обрати своє <span>↗</span></a>
+        <div class="hero-note"><span class="sparkle">✳</span> Підібрано з любов’ю до деталей</div>
+      </div>
+      <div class="hero-art">
+        <img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=1100&q=85" alt="Естетична композиція косметики">
+        <div class="round-stamp">YOUR DAILY<br>BEAUTY RITUAL</div>
+        <div class="hero-caption">THE ROSelle EDIT · № 01</div>
+      </div>
     </section>
 
-    <section class="letter-section section-shell" id="letter">
+    <section class="ticker" aria-label="Категорії"><span>SKINCARE</span><b>✳</b><span>MAKEUP</span><b>✳</b><span>FRAGRANCE</span><b>✳</b><span>SELF-CARE</span><b>✳</b><span>SKINCARE</span></section>
+
+    <section class="section intro" id="about">
+      <p class="eyebrow">A LITTLE NOTE FROM US</p>
+      <h2>Краса — це не правила.<br><em>Це твоє відчуття.</em></h2>
+      <p>Ми зібрали в одному місці улюблені beauty-категорії: від щоденного догляду до акцентного макіяжу та особливих ароматів. Обирай те, що пасує саме твоєму настрою.</p>
+    </section>
+
+    <section class="section" id="catalog">
       <div class="section-heading">
-        <p class="eyebrow">від усього серця</p>
-        <h2>Для тебе, <em>Зая</em></h2>
+        <div><p class="eyebrow">THE BEAUTY SHELF</p><h2>Знайди свої <em>улюбленці</em></h2></div>
+        <span class="muted">01 — 06 / ROSelle selection</span>
       </div>
-      <article class="letter-card">
-        <div class="letter-mark">“</div>
-        <p>Мій коханий, вітаю тебе з днем народження!</p>
-        <p>Найперше хочу побажати тобі міцного здоров’я, душевного спокою та сил на все, що задумав. Нехай кожен новий день приносить хороші новини, приємні зустрічі й можливості, які відкриватимуть перед тобою нові дороги.</p>
-        <p>Бажаю, щоб усе, про що ти мрієш, поступово ставало реальністю. Нехай на твоєму шляху зустрічаються саме ті люди, обставини й можливості, які допоможуть зробити життя ще кращим, щасливішим і цікавішим.</p>
-        <p>Нехай у всіх справах супроводжують успіх і впевненість, а вдома завжди чекають любов, затишок і підтримка. Бажаю, щоб ми завжди чули одне одного, поважали, берегли й залишалися однією командою — і в радісні моменти, і тоді, коли потрібна особлива підтримка.</p>
-        <p>Дякую тобі за турботу, за наші спільні моменти, за те, що ти поруч, і за нашу найкращу донечку. Нехай у твоєму серці завжди буде тепло, а в житті — багато щасливих приводів усміхатися.</p>
-        <p class="letter-sign">З днем народження, коханий. Ми тебе дуже любимо! <span>♡</span></p>
-      </article>
+      <div class="toolbar">
+        <div class="filters" id="filters">
+          <button class="filter active" data-category="all">Усе</button>
+          <button class="filter" data-category="skincare">Догляд</button>
+          <button class="filter" data-category="makeup">Макіяж</button>
+          <button class="filter" data-category="fragrance">Парфумерія</button>
+        </div>
+        <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Знайти продукт..."></label>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
     </section>
 
-    <section class="moments-section section-shell" id="moments">
-      <div class="section-heading centered">
-        <p class="eyebrow">трохи нашої історії</p>
-        <h2>Наші маленькі <em>скарби</em></h2>
-        <p class="section-intro">Найцінніше — це моменти, які стають спогадами й назавжди залишаються в серці.</p>
-      </div>
-      <div class="photo-grid">
-        <figure class="photo-card photo-large">
-          <div class="photo-frame"><img src="1000079252.jpg" alt="Наш спільний момент — Макдональдс фореве" loading="lazy"><div class="photo-fallback">додайте фото ♡</div></div>
-          <figcaption><span>01 / наші традиції</span><strong>Макдональс фореве</strong></figcaption>
-        </figure>
-        <figure class="photo-card photo-offset">
-          <div class="photo-frame"><img src="1000079725.jpg" alt="Наша найкраща донечка" loading="lazy"><div class="photo-fallback">додайте фото ♡</div></div>
-          <figcaption><span>02 / найбільше щастя</span><strong>У нас з тобою найкраща донечка</strong></figcaption>
-        </figure>
-        <figure class="photo-card">
-          <div class="photo-frame"><img src="1000079472.jpg" alt="Твій найкращий шашлик" loading="lazy"><div class="photo-fallback">додайте фото ♡</div></div>
-          <figcaption><span>03 / домашній затишок</span><strong>В тебе самий кращий шашлик</strong></figcaption>
-        </figure>
-        <figure class="photo-card photo-offset-small">
-          <div class="photo-frame"><img src="1000042415.jpg" alt="Світлий родинний спогад" loading="lazy"><div class="photo-fallback">додайте фото ♡</div></div>
-          <figcaption><span>04 / теплі миті</span><strong>Христос воскрес</strong></figcaption>
-        </figure>
-      </div>
+    <section class="feature" id="benefits">
+      <div class="feature-image"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1100&q=85" alt="Засоби для догляду за шкірою"></div>
+      <div class="feature-copy"><p class="eyebrow">A SOFTER KIND OF BEAUTY</p><h2>Твій час.<br><em>Твій ритуал.</em></h2><p>Не поспішай. Обери улюблений засіб, запали свічку й залиш трохи часу для себе. Адже турбота про себе починається з маленьких моментів.</p><a href="#catalog" class="text-link">Переглянути каталог ↗</a></div>
     </section>
 
-    <section class="you-section section-shell">
-      <div class="you-card">
-        <div class="you-symbol">✳</div>
-        <p class="eyebrow">і ще дещо важливе</p>
-        <h2>Ти — наш <em>найкращий чоловік і тато</em></h2>
-        <p>Нехай ти завжди відчуваєш, як сильно тебе цінують і люблять. Нехай у нашому домі не закінчуються обійми, добрі слова, жарти й ті прості миті, з яких складається справжнє щастя.</p>
-        <p class="you-sign">Обіймаємо серцем. Любимо безмежно.</p>
-      </div>
-    </section>
-
-    <section class="final-section section-shell">
-      <div class="final-flower">✳</div>
-      <p class="eyebrow">для нашого коханого</p>
-      <h2>Будь щасливий,<br><em>Зая!</em></h2>
-      <p>Нехай найкраще в твоєму житті буде ще попереду.</p>
-      <div class="final-heart">♡</div>
-      <span class="final-family">твоя сім’я · з любов’ю</span>
+    <section class="newsletter">
+      <p class="eyebrow">A NOTE OF BEAUTY</p><h2>Трішки краси у твоїй стрічці</h2><p>Залишайся поруч — попереду ще багато красивого.</p>
+      <a class="primary-btn" href="#catalog">Знайти свій beauty-match <span>↗</span></a>
     </section>
   </main>
 
-  <footer><span>зроблено з любов’ю</span><span>♡</span></footer>
+  <footer class="footer"><a class="wordmark" href="#">ROSELLE<span>BEAUTY STORE</span></a><p>Краса в деталях — турбота в кожному дотику.</p><div class="footer-bottom"><span>© 2026 ROSELLE BEAUTY STORE</span><a href="#catalog">До каталогу ↑</a></div></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-panel" id="cartPanel" aria-label="Кошик" aria-hidden="true">
+    <div class="cart-head"><div><p class="eyebrow">YOUR SELECTION</p><h2>Твій кошик</h2></div><button class="icon-btn" id="closeCart" aria-label="Закрити">×</button></div>
+    <div class="cart-items" id="cartItems"><p class="empty-cart">Тут поки затишно й порожньо ♡</p></div>
+    <div class="cart-bottom"><div class="total"><span>Разом</span><strong id="cartTotal">0 ₴</strong></div><button class="primary-btn checkout-btn" id="checkoutBtn">Оформити замовлення ↗</button><p class="tiny-note">Демо-магазин: оформлення замовлення поки не надсилає оплату.</p></div>
+  </aside>
+
+  <div class="modal-wrap" id="checkoutModal" aria-hidden="true">
+    <form class="checkout-modal" id="checkoutForm">
+      <button type="button" class="modal-close icon-btn" id="closeModal">×</button>
+      <p class="eyebrow">ALMOST YOURS</p><h2>Оформлення <em>замовлення</em></h2>
+      <p class="modal-desc">Залиш контактні дані — це демонстраційна форма для макета магазину.</p>
+      <label>Твоє ім’я<input name="name" required placeholder="Як до тебе звертатися?"></label>
+      <label>Телефон або Telegram<input name="contact" required placeholder="@username або номер"></label>
+      <label>Коментар<textarea name="comment" rows="3" placeholder="Побажання до замовлення (необов’язково)"></textarea></label>
+      <button class="primary-btn" type="submit">Підтвердити демо-замовлення ↗</button>
+      <p class="tiny-note">Після підключення до Telegram або CRM заявки можна буде отримувати автоматично.</p>
+    </form>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
   <script src="script.js"></script>
 </body>
 </html>
