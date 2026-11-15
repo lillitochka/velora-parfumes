@@ -1,10 +1,10 @@
 const products = [
- {id:1,name:"Rose Water Cleanser",category:"skincare",categoryName:"Догляд",description:"Ніжне очищення для щоденного ритуалу.",price:390,image:"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=80",tag:"BESTSELLER"},
- {id:2,name:"Velvet Lip Tint",category:"makeup",categoryName:"Макіяж",description:"Легкий відтінок і комфортне покриття.",price:320,image:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=700&q=80",tag:"NEW"},
- {id:3,name:"Cloud Cream",category:"skincare",categoryName:"Догляд",description:"Комфортний крем для м’якого зволоження.",price:560,image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=80",tag:"DAILY CARE"},
- {id:4,name:"Petal Eau de Parfum",category:"fragrance",categoryName:"Парфумерія",description:"Ніжний квітковий настрій на кожен день.",price:890,image:"https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=80",tag:"EDITOR'S PICK"},
- {id:5,name:"Blush Touch",category:"makeup",categoryName:"Макіяж",description:"Природний рум’янець із делікатним сяйвом.",price:450,image:"https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=700&q=80",tag:"SOFT GLOW"},
- {id:6,name:"Silk Hair Elixir",category:"skincare",categoryName:"Догляд",description:"Доглядовий еліксир для гладкості волосся.",price:490,image:"https://images.unsplash.com/photo-1600612253971-422e7f7faeb6?auto=format&fit=crop&w=700&q=80",tag:"SELF-CARE"}
+ {id:1,name:"Rose Water Cleanser",category:"skincare",categoryName:"Догляд",description:"Ніжне очищення для щоденного ритуалу.",price:390,image:"https://noya.ma/cdn/shop/collections/no-me-gusta.png?v=1767387736",tag:"BESTSELLER"},
+ {id:2,name:"Velvet Lip Tint",category:"makeup",categoryName:"Макіяж",description:"Легкий відтінок і комфортне покриття.",price:320,image:"https://www.elilbeauty.com/cdn/shop/collections/elil-beauty-cosmetic-collection.png?v=1757274077",tag:"NEW"},
+ {id:3,name:"Cloud Cream",category:"skincare",categoryName:"Догляд",description:"Комфортний крем для м’якого зволоження.",price:560,image:"https://lushe-beauty.com/cdn/shop/files/beauty-and-skincare-products.png?v=1760409499&width=1600",tag:"DAILY CARE"},
+ {id:4,name:"Petal Eau de Parfum",category:"fragrance",categoryName:"Парфумерія",description:"Ніжний квітковий настрій на кожен день.",price:890,image:"https://resource.myaiart.io/myaiart/generated/image/02ff9933835e4dcc9e6e0503aeb8a8af.jpg",tag:"EDITOR'S PICK"},
+ {id:5,name:"Blush Touch",category:"makeup",categoryName:"Макіяж",description:"Природний рум’янець із делікатним сяйвом.",price:450,image:"https://assets.promptbase.com/DALLE_IMAGES/3Krk5gUJsrYTslCgKccsraYXNJd2/resized/1732600609707y_800x800.webp?alt=media&token=f9465adb-c015-4154-a3ab-1c3b344283b2",tag:"SOFT GLOW"},
+ {id:6,name:"Silk Hair Elixir",category:"skincare",categoryName:"Догляд",description:"Доглядовий еліксир для гладкості волосся.",price:490,image:"https://www.dollface-ulm.de/assets/hero-beauty-DvlioU6f.webp",tag:"SELF-CARE"}
 ];
 let cart = [];
 let activeCategory = "all";
