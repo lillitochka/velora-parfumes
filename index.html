@@ -3,98 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f7eeee">
-  <title>ROSELLE — Beauty Store</title>
-  <meta name="description" content="ROSELLE — косметика, догляд і парфумерія для твоїх щоденних ритуалів краси.">
+  <meta name="theme-color" content="#f5efe8">
+  <meta name="description" content="PERFUMES FROM VELORA — простір культових ароматів та витонченої парфумерії.">
+  <title>PERFUMES FROM VELORA — аромат, що залишається</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="announcement">ТВОЯ КРАСА — ТВОЯ ІСТОРІЯ · ВІТАЄМО В ROSELLE</div>
+  <div class="announcement">ВІДКРИЙ СВІЙ НОВИЙ УЛЮБЛЕНИЙ АРОМАТ <span>✦</span> PERFUMES FROM VELORA</div>
   <header class="header">
-    <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Відкрити меню">☰</button>
-    <a class="wordmark" href="#">ROSELLE<span>BEAUTY STORE</span></a>
+    <a class="brand" href="#" aria-label="Velora — на головну">
+      <span class="brand-main">VELORA</span>
+      <span class="brand-sub">PERFUMES & BEAUTY</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Відкрити меню">☰</button>
     <nav class="nav" id="nav">
-      <a href="#catalog">Каталог</a><a href="#about">Про нас</a><a href="#benefits">Наші переваги</a>
+      <a href="#catalog">КАТАЛОГ</a>
+      <a href="#about">ПРО НАС</a>
+      <a href="#contacts">КОНТАКТИ</a>
     </nav>
-    <button class="cart-trigger" id="openCart" aria-label="Відкрити кошик">Кошик <span id="cartCount">0</span></button>
+    <button class="cart-button" id="openCart" aria-label="Відкрити кошик">
+      КОШИК <span class="cart-count" id="cartCount">0</span>
+    </button>
   </header>
 
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">BEAUTY THAT FEELS LIKE YOU</p>
-        <h1>Маленькі ритуали.<br><em>Велика любов</em> до себе.</h1>
-        <p class="hero-text">Косметика, догляд і аромати, які додають трішки магії у звичайні дні.</p>
-        <a class="primary-btn" href="#catalog">Обрати своє <span>↗</span></a>
-        <div class="hero-note"><span class="sparkle">♡</span> Підібрано з любов’ю до деталей</div>
+        <p class="eyebrow">THE ART OF FRAGRANCE · EST. 2026</p>
+        <h1>Аромат — це<br><em>твоя історія.</em></h1>
+        <p class="hero-text">Відкрий світ вишуканої парфумерії. Обирай аромат, який говорить про тебе без слів.</p>
+        <a class="button button-dark" href="#catalog">ОБРАТИ АРОМАТ <span>↗</span></a>
+        <div class="hero-note"><span class="note-line"></span> YOUR SIGNATURE SCENT</div>
       </div>
-      <div class="hero-art">
-        <img src="https://noya.ma/cdn/shop/collections/no-me-gusta.png?v=1767387736" alt="Естетична композиція косметики">
-        <div class="round-stamp">YOUR DAILY<br>BEAUTY RITUAL</div>
-        <div class="hero-caption">THE ROSelle EDIT · № 01</div>
+      <div class="hero-visual">
+        <div class="hero-image"></div>
+        <div class="hero-stamp">SCENT<br>IS A<br>MEMORY</div>
+        <div class="hero-caption">A little luxury<br>for every day.</div>
       </div>
     </section>
 
-    <section class="ticker" aria-label="Категорії"><span>SKINCARE</span><b>♡</b><span>MAKEUP</span><b>♡</b><span>FRAGRANCE</span><b>♡</b><span>SELF-CARE</span><b>♡</b><span>SKINCARE</span></section>
-
-    <section class="section intro" id="about">
-      <p class="eyebrow">A LITTLE NOTE FROM US</p>
-      <h2>Краса — це не правила.<br><em>Це твоє відчуття.</em></h2>
-      <p>Ми зібрали в одному місці улюблені beauty-категорії: від щоденного догляду до акцентного макіяжу та особливих ароматів. Обирай те, що пасує саме твоєму настрою.</p>
+    <section class="brand-strip" aria-label="Бренди">
+      <span>DIOR</span><span>CAROLINA HERRERA</span><span>YVES SAINT LAURENT</span><span>VALENTINO</span><span>CHANEL</span>
     </section>
 
-    <section class="section" id="catalog">
+    <section class="catalog section" id="catalog">
       <div class="section-heading">
-        <div><p class="eyebrow">THE BEAUTY SHELF</p><h2>Знайди свої <em>улюбленці</em></h2></div>
-        <span class="muted">01 — 06 / ROSelle selection</span>
+        <div><p class="eyebrow">CURATED FOR YOU</p><h2>Обери свій <em>настрій</em></h2></div>
+        <p class="section-intro">Культові композиції, до яких хочеться повертатися.</p>
       </div>
-      <div class="toolbar">
-        <div class="filters" id="filters">
-          <button class="filter active" data-category="all">Усе</button>
-          <button class="filter" data-category="skincare">Догляд</button>
-          <button class="filter" data-category="makeup">Макіяж</button>
-          <button class="filter" data-category="fragrance">Парфумерія</button>
-        </div>
-        <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Знайти продукт..."></label>
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="all">Усі аромати</button>
+        <button class="filter" data-filter="floral">Квіткові</button>
+        <button class="filter" data-filter="sweet">Солодкі</button>
+        <button class="filter" data-filter="fresh">Свіжі</button>
       </div>
       <div class="product-grid" id="productGrid"></div>
     </section>
 
-    <section class="feature" id="benefits">
-      <div class="feature-image"><img src="https://www.dollface-ulm.de/assets/hero-beauty-DvlioU6f.webp" alt="Засоби для догляду за шкірою"></div>
-      <div class="feature-copy"><p class="eyebrow">A SOFTER KIND OF BEAUTY</p><h2>Твій час.<br><em>Твій ритуал.</em></h2><p>Не поспішай. Обери улюблений засіб, запали свічку й залиш трохи часу для себе. Адже турбота про себе починається з маленьких моментів.</p><a href="#catalog" class="text-link">Переглянути каталог ↗</a></div>
+    <section class="quote-section" id="about">
+      <p class="eyebrow">A NOTE FROM VELORA</p>
+      <p class="quote">«Парфум — це невидимий аксесуар, який створює <em>незабутнє враження.</em>»</p>
+      <span class="quote-signature">WITH LOVE, VELORA</span>
     </section>
 
-    <section class="newsletter">
-      <p class="eyebrow">A NOTE OF BEAUTY</p><h2>Трішки краси у твоїй стрічці</h2><p>Залишайся поруч — попереду ще багато красивого.</p>
-      <a class="primary-btn" href="#catalog">Знайти свій beauty-match <span>↗</span></a>
+    <section class="service section">
+      <div class="service-card"><span>01</span><h3>Обрані аромати</h3><p>Добірка популярних парфумерних композицій.</p></div>
+      <div class="service-card"><span>02</span><h3>Твій стиль</h3><p>Знайди аромат під настрій, подію чи особливий момент.</p></div>
+      <div class="service-card"><span>03</span><h3>Турбота в деталях</h3><p>Допоможемо з вибором і відповімо на твої запитання.</p></div>
     </section>
   </main>
 
-  <footer class="footer"><a class="wordmark" href="#">ROSELLE<span>BEAUTY STORE</span></a><p>Краса в деталях — турбота в кожному дотику.</p><div class="footer-bottom"><span>© 2026 ROSELLE BEAUTY STORE</span><a href="#catalog">До каталогу ↑</a></div></footer>
+  <footer class="footer" id="contacts">
+    <div><a class="brand footer-brand" href="#"><span class="brand-main">VELORA</span><span class="brand-sub">PERFUMES & BEAUTY</span></a><p class="footer-motto">Залишай після себе лише найкраще враження.</p></div>
+    <div class="footer-links"><span class="eyebrow">НАВІГАЦІЯ</span><a href="#catalog">Каталог</a><a href="#about">Про нас</a><a href="#contacts">Контакти</a></div>
+    <div class="footer-links"><span class="eyebrow">ЗВ'ЯЗОК</span><a href="https://t.me/" target="_blank" rel="noopener">Telegram</a><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a><span class="footer-small">© 2026 VELORA</span></div>
+  </footer>
 
   <div class="overlay" id="overlay"></div>
-  <aside class="cart-panel" id="cartPanel" aria-label="Кошик" aria-hidden="true">
-    <div class="cart-head"><div><p class="eyebrow">YOUR SELECTION</p><h2>Твій кошик</h2></div><button class="icon-btn" id="closeCart" aria-label="Закрити">×</button></div>
-    <div class="cart-items" id="cartItems"><p class="empty-cart">Тут поки затишно й порожньо ♡</p></div>
-    <div class="cart-bottom"><div class="total"><span>Разом</span><strong id="cartTotal">0 ₴</strong></div><button class="primary-btn checkout-btn" id="checkoutBtn">Оформити замовлення ↗</button><p class="tiny-note">Демо-магазин: оформлення замовлення поки не надсилає оплату.</p></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Кошик">
+    <div class="drawer-head"><div><p class="eyebrow">YOUR SELECTION</p><h2>Кошик</h2></div><button class="close-cart" id="closeCart" aria-label="Закрити">×</button></div>
+    <div class="cart-items" id="cartItems"><p class="empty-cart">Тут поки порожньо. Час знайти свій аромат ✦</p></div>
+    <div class="cart-bottom">
+      <div class="total-row"><span>Разом</span><strong id="cartTotal">0 ₴</strong></div>
+      <button class="button button-dark checkout" id="checkout">ОФОРМИТИ ЗАМОВЛЕННЯ <span>↗</span></button>
+      <p class="cart-hint">Демонстраційний магазин: перед запуском додайте свої контакти та спосіб приймання замовлень.</p>
+    </div>
   </aside>
 
-  <div class="modal-wrap" id="checkoutModal" aria-hidden="true">
-    <form class="checkout-modal" id="checkoutForm">
-      <button type="button" class="modal-close icon-btn" id="closeModal">×</button>
-      <p class="eyebrow">ALMOST YOURS</p><h2>Оформлення <em>замовлення</em></h2>
-      <p class="modal-desc">Залиш контактні дані — це демонстраційна форма для макета магазину.</p>
-      <label>Твоє ім’я<input name="name" required placeholder="Як до тебе звертатися?"></label>
-      <label>Телефон або Telegram<input name="contact" required placeholder="@username або номер"></label>
-      <label>Коментар<textarea name="comment" rows="3" placeholder="Побажання до замовлення (необов’язково)"></textarea></label>
-      <button class="primary-btn" type="submit">Підтвердити демо-замовлення ↗</button>
-      <p class="tiny-note">Після підключення до Telegram або CRM заявки можна буде отримувати автоматично.</p>
+  <div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+    <button class="modal-close" id="closeModal" aria-label="Закрити">×</button>
+    <p class="eyebrow">ALMOST YOURS</p><h2 id="orderTitle">Оформлення <em>замовлення</em></h2>
+    <form id="orderForm">
+      <label>Ваше ім'я<input name="name" required placeholder="Як до вас звертатися?"></label>
+      <label>Номер телефону<input name="phone" required type="tel" placeholder="+380 ..."></label>
+      <label>Коментар<textarea name="comment" rows="3" placeholder="Побажання до замовлення (необов'язково)"></textarea></label>
+      <button class="button button-dark" type="submit">ПІДГОТУВАТИ ЗАМОВЛЕННЯ <span>↗</span></button>
     </form>
+    <p class="cart-hint">Після натискання відкриється Telegram із текстом замовлення. Додайте свій username у script.js.</p>
   </div>
+
   <div class="toast" id="toast" role="status"></div>
   <script src="script.js"></script>
 </body>
