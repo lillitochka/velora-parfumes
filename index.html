@@ -4,177 +4,162 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f5f0">
-  <meta name="description" content="VELORA — luxury perfume boutique">
-  <title>VELORA — The Art of Perfume</title>
-
+  <meta name="theme-color" content="#f4f0e9">
+  <meta name="description" content="VELORA — простір вишуканої парфумерії">
+  <title>VELORA — Fragrance Collection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="announcement">
-    COMPLIMENTARY DELIVERY ON SELECTED ORDERS
-  </div>
+  <div class="topline">VELORA — THE ART OF PERSONAL FRAGRANCE</div>
 
   <header class="header">
-    <button class="menu-toggle" id="menuToggle">☰</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Відкрити меню">☰</button>
 
-    <a href="#home" class="brand">
-      <span class="brand-main">VELORA</span>
-      <span class="brand-sub">PARFUMERIE DE LUXE</span>
+    <a href="#home" class="logo">
+      <span>VELORA</span>
+      <small>FRAGRANCE HOUSE</small>
     </a>
 
     <nav class="nav" id="nav">
       <a href="#home">ГОЛОВНА</a>
-      <a href="#catalog">КОЛЕКЦІЯ</a>
-      <a href="#about">ФІЛОСОФІЯ</a>
+      <a href="#collections">КОЛЕКЦІЇ</a>
+      <a href="#about">ПРО VELORA</a>
       <a href="#contacts">КОНТАКТИ</a>
     </nav>
 
-    <button class="cart-button" id="openCart">
+    <button class="bag-button" id="openCart">
       BAG <span id="cartCount">0</span>
     </button>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="hero-content">
-        <p class="eyebrow">THE WORLD OF FINE FRAGRANCES</p>
-        <h1>Luxury is<br>an <em>invisible</em><br>signature.</h1>
-        <p class="hero-text">
-          Парфумерія, що говорить замість слів.
-          Відкрийте колекцію ароматів, створених
-          залишати незабутнє враження.
+      <div class="hero-copy">
+        <p class="overline">A WORLD OF BEAUTIFUL SCENTS</p>
+        <h1>Find your<br><i>signature.</i></h1>
+        <p class="hero-description">
+          Аромат — це більше, ніж деталь образу.
+          Це настрій, спогад і частинка вашої індивідуальності.
         </p>
-        <a href="#catalog" class="button button-dark">
+        <a class="hero-link" href="#collections">
           ВІДКРИТИ КОЛЕКЦІЮ <span>↗</span>
         </a>
+        <div class="hero-number">01 — THE VELORA EDIT</div>
       </div>
 
-      <div class="hero-visual">
-        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1200&q=90" alt="Luxury perfume">
-        <div class="hero-caption">
-          <span>THE ART OF</span>
-          <strong>PERFUMERY</strong>
+      <div class="hero-image">
+        <img src="velora-hero.png" alt="Вишуканий парфум на воді">
+        <div class="hero-image-label">
+          <span>VELORA</span>
+          <small>SCENT IS A LANGUAGE</small>
         </div>
       </div>
     </section>
 
-    <div class="brand-strip">
+    <div class="brand-line">
       <span>DIOR</span>
       <span>CHANEL</span>
-      <span>YSL</span>
       <span>VALENTINO</span>
       <span>MOSCHINO</span>
-      <span>ARIANA GRANDE</span>
+      <span>YVES SAINT LAURENT</span>
     </div>
 
-    <section class="section catalog-section" id="catalog">
-      <div class="section-heading">
+    <section class="collections-section" id="collections">
+      <div class="collection-heading">
         <div>
-          <p class="eyebrow">CURATED FOR YOU</p>
-          <h2>The fragrance <em>collection</em></h2>
+          <p class="overline">DISCOVER YOUR FAVORITE</p>
+          <h2>Fragrance <i>collection</i></h2>
         </div>
-        <p class="section-intro">
-          Знайдіть аромат, який стане вашим особливим підписом.
+        <p>Знайомтеся з ароматами ближче та обирайте свій.</p>
+      </div>
+
+      <div id="collectionsGrid"></div>
+    </section>
+
+    <section class="editorial" id="about">
+      <div class="editorial-image">
+        <img src="velora-hero.png" alt="Парфумерна композиція">
+      </div>
+      <div class="editorial-copy">
+        <p class="overline">THE VELORA EXPERIENCE</p>
+        <h2>More than<br><i>a fragrance.</i></h2>
+        <p>
+          Ми зібрали аромати, які мають власний характер.
+          Від ніжних і легких до насичених та виразних —
+          кожен може знайти композицію до душі.
         </p>
+        <a href="#collections" class="text-link">ДО КОЛЕКЦІЇ ↗</a>
       </div>
-
-      <div class="filters">
-        <button class="filter active" data-filter="all">УСІ АРОМАТИ</button>
-        <button class="filter" data-filter="floral">КВІТКОВІ</button>
-        <button class="filter" data-filter="sweet">СОЛОДКІ</button>
-        <button class="filter" data-filter="fresh">СВІЖІ</button>
-      </div>
-
-      <div class="product-grid" id="productGrid"></div>
     </section>
 
-    <section class="quote-section" id="about">
-      <p class="eyebrow">THE VELORA PHILOSOPHY</p>
-      <h2>Some memories<br>have a <em>fragrance.</em></h2>
-      <p>Аромат — це невидима розкіш, яка залишається з вами.</p>
-    </section>
-
-    <section class="section service">
-      <div class="service-card">
-        <span>01</span>
-        <h3>Вишукана колекція</h3>
-        <p>Добірка ароматів від відомих парфумерних брендів.</p>
-      </div>
-      <div class="service-card">
-        <span>02</span>
-        <h3>Ваш вибір</h3>
-        <p>Оберіть аромат та доступний об'єм флакона.</p>
-      </div>
-      <div class="service-card">
-        <span>03</span>
-        <h3>Особливі деталі</h3>
-        <p>Кожен аромат має власну історію та характер.</p>
-      </div>
+    <section class="closing">
+      <p class="overline">YOUR SCENT. YOUR STORY.</p>
+      <h2>Leave a little<br><i>impression.</i></h2>
     </section>
   </main>
 
   <footer class="footer" id="contacts">
-    <div>
-      <a href="#home" class="brand footer-brand">
-        <span class="brand-main">VELORA</span>
-        <span class="brand-sub">PARFUMERIE DE LUXE</span>
+    <div class="footer-brand">
+      <a href="#home" class="logo">
+        <span>VELORA</span>
+        <small>FRAGRANCE HOUSE</small>
       </a>
-      <p class="footer-motto">A fragrance is a memory you can wear.</p>
-      <p class="footer-small">© 2026 VELORA</p>
+      <p>Аромати, що залишають враження.</p>
     </div>
-    <div class="footer-links">
-      <p class="eyebrow">NAVIGATION</p>
+
+    <div class="footer-column">
+      <p class="overline">НАВІГАЦІЯ</p>
       <a href="#home">Головна</a>
-      <a href="#catalog">Колекція</a>
-      <a href="#about">Про нас</a>
+      <a href="#collections">Колекції</a>
+      <a href="#about">Про VELORA</a>
     </div>
-    <div class="footer-links">
-      <p class="eyebrow">CONTACT</p>
-      <a href="#" target="_blank">Telegram</a>
-      <a href="#" target="_blank">Instagram</a>
+
+    <div class="footer-column">
+      <p class="overline">ЗВ'ЯЗОК</p>
+      <a href="#" id="telegramLink">Telegram</a>
+      <a href="#" id="instagramLink">Instagram</a>
     </div>
+
+    <div class="footer-bottom">© 2026 VELORA. УСІ ПРАВА ЗАХИЩЕНІ.</div>
   </footer>
 
   <div class="overlay" id="overlay"></div>
 
-  <!-- PRODUCT DETAILS -->
-  <div class="product-modal" id="productModal">
+  <section class="product-modal" id="productModal">
     <button class="modal-close" id="closeProduct">×</button>
     <div id="productDetails"></div>
-  </div>
+  </section>
 
-  <!-- CART -->
   <aside class="cart-drawer" id="cartDrawer">
-    <div class="drawer-head">
-      <h2>Your bag</h2>
-      <button class="close-cart" id="closeCart">×</button>
+    <div class="drawer-header">
+      <div>
+        <p class="overline">YOUR SELECTION</p>
+        <h2>Shopping bag</h2>
+      </div>
+      <button class="modal-close" id="closeCart">×</button>
     </div>
     <div class="cart-items" id="cartItems"></div>
-    <div class="cart-bottom">
-      <div class="total-row">
+    <div class="cart-footer">
+      <div class="cart-total">
         <span>Разом</span>
         <strong id="cartTotal">0 ₴</strong>
       </div>
-      <button class="button button-dark checkout" id="checkout">
-        ОФОРМИТИ ЗАМОВЛЕННЯ ↗
-      </button>
+      <p class="cart-note">Остаточну вартість та наявність об'єму підтвердимо під час оформлення.</p>
+      <button class="dark-button full-button" id="checkout">ОФОРМИТИ ЗАМОВЛЕННЯ ↗</button>
     </div>
   </aside>
 
-  <!-- ORDER -->
-  <div class="modal" id="orderModal">
-    <button class="modal-close" id="closeModal">×</button>
-    <p class="eyebrow">YOUR VELORA SELECTION</p>
-    <h2>Place your <em>order</em></h2>
+  <section class="order-modal" id="orderModal">
+    <button class="modal-close" id="closeOrder">×</button>
+    <p class="overline">VELORA ORDER</p>
+    <h2>Your <i>details</i></h2>
     <form id="orderForm">
       <label>Ваше ім'я
-        <input name="name" required placeholder="Ваше ім'я">
+        <input name="name" required placeholder="Ім'я">
       </label>
       <label>Номер телефону
         <input name="phone" type="tel" required placeholder="+380">
@@ -182,9 +167,9 @@
       <label>Коментар
         <textarea name="comment" rows="3" placeholder="Ваші побажання"></textarea>
       </label>
-      <button class="button button-dark" type="submit">ПІДТВЕРДИТИ ↗</button>
+      <button class="dark-button full-button" type="submit">НАДІСЛАТИ ЗАМОВЛЕННЯ ↗</button>
     </form>
-  </div>
+  </section>
 
   <div class="toast" id="toast"></div>
 
