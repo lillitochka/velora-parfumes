@@ -38,7 +38,6 @@ const products = [
   {id:32,brand:"VICTORIA'S SECRET",name:"Pure Seduction",image:"IMG_7504.jpeg",price:600,volumes:[75,250],description:"Фруктовий ароматний міст із солодким характером."}
 ];
 
-// Колекції: перший аромат використовується як обкладинка.
 const collections = [
   {name:"Sabrina Carpenter",ids:[3,4,5,6,7]},
   {name:"Good Girl",ids:[11,12,13]},
@@ -52,7 +51,6 @@ const collections = [
 
 const $ = id => document.getElementById(id);
 
-let currentFilter = "all";
 let currentProduct = null;
 let currentCollection = null;
 let selectedVolume = null;
@@ -63,52 +61,53 @@ let showingFavorites = false;
 const money = value =>
   new Intl.NumberFormat("uk-UA").format(value) + " ₴";
 
-// Ціна в products.price — ціна найменшого об'єму.
-// Інші об'єми рахуються пропорційно.
 function getPrice(product, volume) {
-  const smallest = Math.min(...product.volumes);
-  return Math.round((product.price * volume / smallest) / 10) * 10;
+  const smallestVolume = Math.min(...product.volumes);
+  return Math.round((product.price * volume / smallestVolume) / 10) * 10;
 }
 
 function getCollectionFor(id) {
   return collections.find(group => group.ids.includes(id));
 }
 
+function matchesSearch(product, query) {
+  return `${product.brand} ${product.name}`.toLowerCase().includes(query);
+}
+
 function getVisibleItems() {
   const query = $("searchInput").value.trim().toLowerCase();
   const sort = $("sortSelect").value;
-
-  let items = [];
+  const items = [];
+  const groupedIds = new Set();
 
   collections.forEach(group => {
     const members = group.ids
-      .map(id => products.find(p => p.id === id))
+      .map(id => products.find(product => product.id === id))
       .filter(Boolean);
 
-    const matches = members.filter(p =>
-      `${p.brand} ${p.name}`.toLowerCase().includes(query)
+    members.forEach(product => groupedIds.add(product.id));
+
+    const matching = members.filter(product =>
+      matchesSearch(product, query) &&
+      (!showingFavorites || favorites.has(product.id))
     );
 
-    const favoriteMatches = matches.filter(p => favorites.has(p.id));
-
-    if (showingFavorites) {
-      if (favoriteMatches.length) {
-        items.push({type:"collection", group, product:favoriteMatches[0]});
-      }
-    } else if (matches.length) {
-      items.push({type:"collection", group, product:members[0]});
+    if (matching.length) {
+      items.push({
+        type: "collection",
+        group,
+        product: members[0]
+      });
     }
   });
 
   products.forEach(product => {
-    if (getCollectionFor(product.id)) return;
+    if (groupedIds.has(product.id)) return;
 
-    const matchesSearch =
-      `${product.brand} ${product.name}`.toLowerCase().includes(query);
-    const matchesFavorites =
-      !showingFavorites || favorites.has(product.id);
-
-    if (matchesSearch && matchesFavorites) {
+    if (
+      matchesSearch(product, query) &&
+      (!showingFavorites || favorites.has(product.id))
+    ) {
       items.push({type:"product", product});
     }
   });
@@ -133,29 +132,29 @@ function renderProducts() {
   $("productGrid").innerHTML = items.map(item => {
     const product = item.product;
     const isCollection = item.type === "collection";
-    const group = item.group;
     const isFavorite = isCollection
-      ? group.ids.every(id => favorites.has(id))
+      ? item.group.ids.every(id => favorites.has(id))
       : favorites.has(product.id);
 
     return `
-      <article class="product-card ${isCollection ? "collection-card" : ""}"
-        data-id="${product.id}">
+      <article class="product-card" data-id="${product.id}">
         <div class="product-image">
           <img src="${product.image}" alt="${product.name}" loading="lazy">
           <button class="favorite-button ${isFavorite ? "active" : ""}"
-            data-favorite="${product.id}" aria-label="Додати в обране">
+            data-favorite="${product.id}" aria-label="Обране">
             ${isFavorite ? "♥" : "♡"}
           </button>
-          ${isCollection ? `<span class="collection-count">${group.ids.length} аромати</span>` : ""}
+          ${isCollection
+            ? `<span class="collection-count">${item.group.ids.length} ароматів</span>`
+            : ""}
         </div>
         <div class="product-info">
-          <div class="product-brand">${product.brand}</div>
-          <h3 class="product-name">${isCollection ? group.name : product.name}</h3>
+          <div class="product-brand">${isCollection ? item.group.name : product.brand}</div>
+          <h3 class="product-name">${isCollection ? item.group.name : product.name}</h3>
           <div class="product-bottom">
             <span class="product-price">від ${money(product.price)}</span>
             <button class="product-buy" data-open="${product.id}">
-              ${isCollection ? "Переглянути →" : "Детальніше →"}
+              Детальніше →
             </button>
           </div>
         </div>
@@ -174,10 +173,11 @@ function renderThumbnails() {
   }
 
   const members = currentCollection.ids
-    .map(id => products.find(p => p.id === id))
+    .map(id => products.find(product => product.id === id))
     .filter(Boolean);
 
   container.hidden = false;
+
   container.innerHTML = members.map(product => `
     <button class="detail-thumbnail ${product.id === currentProduct.id ? "active" : ""}"
       data-variant="${product.id}" title="${product.name}">
@@ -208,14 +208,13 @@ function updateProductDetails() {
 }
 
 function openProduct(id) {
-  currentProduct = products.find(p => p.id === Number(id));
+  currentProduct = products.find(product => product.id === Number(id));
   if (!currentProduct) return;
 
   currentCollection = getCollectionFor(currentProduct.id) || null;
   selectedVolume = currentProduct.volumes[0];
 
   updateProductDetails();
-
   $("productOverlay").classList.add("open");
   document.body.classList.add("no-scroll");
 }
@@ -236,9 +235,9 @@ function addToCart() {
     existing.quantity++;
   } else {
     cart.push({
-      id:currentProduct.id,
-      volume:selectedVolume,
-      quantity:1
+      id: currentProduct.id,
+      volume: selectedVolume,
+      quantity: 1
     });
   }
 
@@ -315,6 +314,7 @@ $("productGrid").addEventListener("click",event => {
 
     if (group) {
       const allFavorite = group.ids.every(itemId => favorites.has(itemId));
+
       group.ids.forEach(itemId => {
         if (allFavorite) favorites.delete(itemId);
         else favorites.add(itemId);
@@ -383,6 +383,7 @@ $("orderOverlay").addEventListener("click",event => {
 
 $("searchToggle").addEventListener("click",() => {
   $("searchPanel").classList.toggle("visible");
+
   if ($("searchPanel").classList.contains("visible")) {
     $("searchInput").focus();
   }
@@ -391,23 +392,11 @@ $("searchToggle").addEventListener("click",() => {
 $("searchInput").addEventListener("input",renderProducts);
 $("sortSelect").addEventListener("change",renderProducts);
 
-document.querySelectorAll(".filter-button").forEach(button => {
-  button.addEventListener("click",() => {
-    currentFilter = button.dataset.filter;
-
-    document.querySelectorAll(".filter-button").forEach(item => {
-      item.classList.toggle("active",item === button);
-    });
-
-    renderProducts();
-  });
-});
-
 $("favoritesToggle").addEventListener("click",() => {
   showingFavorites = !showingFavorites;
   $("favoritesToggle").classList.toggle("selected",showingFavorites);
-  $("catalog").scrollIntoView({behavior:"smooth"});
   renderProducts();
+  $("catalog").scrollIntoView({behavior:"smooth"});
 });
 
 $("orderForm").addEventListener("submit",event => {
@@ -421,6 +410,7 @@ $("orderForm").addEventListener("submit",event => {
   const lines = cart.map(item => {
     const product = products.find(p => p.id === item.id);
     const price = getPrice(product,item.volume);
+
     return `• ${product.name} — ${item.volume} мл × ${item.quantity} — ${money(price * item.quantity)}`;
   });
 
@@ -442,10 +432,10 @@ $("orderForm").addEventListener("submit",event => {
     `Коментар: ${comment || "Немає"}`
   ].join("\n");
 
-  if (TELEGRAM_USERNAME === "YOUR_TELEGRAM_USERNAME" || TELEGRAM_LINK === "#") {
+  if (TELEGRAM_USERNAME === "YOUR_TELEGRAM_USERNAME") {
     navigator.clipboard?.writeText(message)
-      .then(() => alert("Текст замовлення скопійовано. Додайте свій Telegram для надсилання замовлень."))
-      .catch(() => alert("Додайте свій Telegram у налаштуваннях сайту."));
+      .then(() => alert("Текст замовлення скопійовано. Telegram ще не підключено."))
+      .catch(() => alert("Telegram ще не підключено."));
     return;
   }
 
@@ -453,15 +443,15 @@ $("orderForm").addEventListener("submit",event => {
     `https://t.me/${TELEGRAM_USERNAME}?text=${encodeURIComponent(message)}`;
 
   window.open(telegramUrl,"_blank");
-
-  cart = [];
-  renderCart();
-  event.target.reset();
-  closeOrder();
 });
 
-if (TELEGRAM_LINK !== "#") $("telegramLink").href = TELEGRAM_LINK;
-if (INSTAGRAM_LINK !== "#") $("instagramLink").href = INSTAGRAM_LINK;
+if (TELEGRAM_LINK !== "#") {
+  $("telegramLink").href = TELEGRAM_LINK;
+}
+
+if (INSTAGRAM_LINK !== "#") {
+  $("instagramLink").href = INSTAGRAM_LINK;
+}
 
 renderProducts();
 renderCart();
