@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f8f5f0">
-  <meta name="description" content="VELORA — простір вишуканих ароматів">
-  <title>VELORA — Perfume Boutique</title>
+  <meta name="description" content="VELORA — простір улюблених ароматів">
+  <title>VELORA — fragrance connection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,193 +14,144 @@
 </head>
 <body>
 
-  <div class="announcement">
-    ВИШУКАНІ АРОМАТИ ДЛЯ ОСОБЛИВИХ МОМЕНТІВ
+<header class="site-header">
+  <a class="logo" href="#">VELORA<span>.</span></a>
+  <p class="header-subtitle">FRAGRANCE CONNECTION</p>
+  <div class="header-actions">
+    <button class="icon-button" id="searchToggle" aria-label="Пошук">⌕</button>
+    <button class="icon-button" id="favoritesToggle" aria-label="Обране">♡</button>
+    <button class="icon-button cart-icon" id="openCart" aria-label="Кошик">
+      ♧ <span id="cartCount">0</span>
+    </button>
   </div>
+</header>
 
-  <header class="header">
-    <a class="logo" href="#">
-      VELORA
-      <span>PERFUME BOUTIQUE</span>
-    </a>
-
-    <nav class="desktop-nav">
-      <a href="#catalog">Каталог</a>
-      <a href="#about">Про нас</a>
-      <a href="#contacts">Контакти</a>
-    </nav>
-
-    <div class="header-actions">
-      <button class="icon-button" id="searchToggle" aria-label="Пошук">⌕</button>
-      <button class="icon-button" id="favoritesToggle" aria-label="Обране">♡</button>
-      <button class="cart-button" id="openCart">
-        Кошик <span id="cartCount">0</span>
-      </button>
+<main>
+  <section class="hero">
+    <img class="hero-image" src="2041550A-2010-482C-B3A6-8211588A4D0B.png" alt="VELORA fragrances">
+    <div class="hero-shade"></div>
+    <div class="hero-content">
+      <span class="eyebrow">YOUR SCENT. YOUR STORY.</span>
+      <h1>Знайди аромат,<br>який стане твоїм</h1>
+      <p>Колекція ароматів, до яких хочеться повертатися</p>
+      <a href="#catalog" class="hero-button">Переглянути каталог</a>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero">
-      <div class="hero-image">
-        <img src="2041550A-2010-482C-B3A6-8211588A4D0B.png" alt="Парфумерна композиція"
-             onerror="this.style.display='none'">
-      </div>
-      <div class="hero-content">
-        <span class="eyebrow">THE ART OF PERFUMERY</span>
-        <h1>Аромат, який<br>говорить за тебе</h1>
-        <p>Відкрий світ витончених композицій та знайди аромат, що стане твоєю особливістю.</p>
-        <a href="#catalog" class="primary-button">Переглянути каталог</a>
-      </div>
-    </section>
-
-    <section class="benefits">
-      <div><span>01</span><p>Вишукані аромати</p></div>
-      <div><span>02</span><p>Ретельно підібраний асортимент</p></div>
-      <div><span>03</span><p>Зручне оформлення замовлення</p></div>
-    </section>
-
-    <section class="catalog-section" id="catalog">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow">DISCOVER YOUR SCENT</span>
-          <h2>Каталог ароматів</h2>
-          <p>Знайди свій особливий аромат</p>
-        </div>
-        <span class="product-counter" id="productCounter">32 товари</span>
-      </div>
-
-      <div class="search-panel" id="searchPanel">
-        <input id="searchInput" type="search" placeholder="Знайти аромат або бренд...">
-      </div>
-
-      <div class="catalog-toolbar">
-        <div class="filter-list">
-          <button class="filter-button active" data-filter="all">Усі товари</button>
-          <button class="filter-button" data-filter="women">Жіночі</button>
-          <button class="filter-button" data-filter="unisex">Унісекс</button>
-          <button class="filter-button" data-filter="men">Чоловічі</button>
-        </div>
-
-        <select id="sortSelect" aria-label="Сортування">
-          <option value="default">За замовчуванням</option>
-          <option value="cheap">Спочатку дешевші</option>
-          <option value="expensive">Спочатку дорожчі</option>
-          <option value="az">За назвою А–Я</option>
-        </select>
-      </div>
-
-      <div class="product-grid" id="productGrid"></div>
-      <div class="empty-state" id="emptyState" hidden>
-        На жаль, товарів за вашим запитом не знайдено.
-      </div>
-    </section>
-
-    <section class="about-section" id="about">
-      <div class="about-image">
-        <img src="IMG_7465.jpeg" alt="Аромат Miss Dior">
-      </div>
-      <div class="about-content">
-        <span class="eyebrow">ABOUT VELORA</span>
-        <h2>Мистецтво<br>відчувати більше</h2>
-        <p>VELORA — простір ароматів, де кожна композиція має власний характер. Обирай те, що відображає саме тебе.</p>
-        <a href="#catalog" class="text-link">Обрати аромат →</a>
-      </div>
-    </section>
-
-    <section class="closing" id="contacts">
-      <span class="eyebrow">YOUR SIGNATURE SCENT</span>
-      <h2>Залишай після себе<br>незабутнє враження</h2>
-      <a href="#catalog" class="primary-button">Обрати свій аромат</a>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <a class="logo footer-logo" href="#">
-      VELORA
-      <span>PERFUME BOUTIQUE</span>
-    </a>
-    <p>Вишуканість у кожній ноті.</p>
-    <div class="footer-links">
-      <a id="telegramLink" href="#" target="_blank" rel="noopener">Telegram</a>
-      <a id="instagramLink" href="#" target="_blank" rel="noopener">Instagram</a>
+  <section class="catalog-section" id="catalog">
+    <div class="section-heading">
+      <span class="eyebrow">VELORA COLLECTION</span>
+      <h2>Каталог ароматів</h2>
+      <p>Обирай свій наступний улюблений аромат</p>
     </div>
-    <small>© 2026 VELORA. Усі права захищені.</small>
-  </footer>
 
-  <!-- Сторінка товару -->
-  <div class="overlay" id="productOverlay">
-    <div class="product-page">
-      <button class="close-button" id="closeProduct">×</button>
-      <div class="product-page-layout">
-        <div class="product-page-image">
-          <img id="detailImage" src="" alt="">
-        </div>
-        <div class="product-page-info">
-          <span class="eyebrow" id="detailBrand"></span>
-          <h2 id="detailName"></h2>
-          <p class="detail-description" id="detailDescription"></p>
+    <div class="search-panel" id="searchPanel">
+      <input id="searchInput" type="search" placeholder="Знайти аромат або бренд...">
+    </div>
 
-          <div class="detail-price" id="detailPrice"></div>
-          <span class="detail-caption">Орієнтовна ціна — залежить від обраного об'єму</span>
+    <div class="catalog-toolbar">
+      <div class="catalog-caption">
+        <span id="productCounter">Каталог</span>
+      </div>
+      <select id="sortSelect" aria-label="Сортування">
+        <option value="default">За замовчуванням</option>
+        <option value="cheap">Спочатку дешевші</option>
+        <option value="expensive">Спочатку дорожчі</option>
+        <option value="az">За назвою</option>
+      </select>
+    </div>
 
-          <div class="volume-section">
-            <h3>Оберіть об'єм</h3>
-            <div class="volume-options" id="volumeOptions"></div>
-          </div>
+    <div class="product-grid" id="productGrid"></div>
+    <div class="empty-state" id="emptyState" hidden>
+      <span>♡</span>
+      <p>Нічого не знайдено</p>
+      <small>Спробуй змінити пошуковий запит</small>
+    </div>
+  </section>
 
-          <button class="primary-button add-to-cart" id="addToCart">
-            Додати до кошика
-          </button>
+  <section class="about-section">
+    <div class="about-image-wrap">
+      <img src="IMG_7465.jpeg" alt="Аромат VELORA" loading="lazy">
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow">ABOUT VELORA</span>
+      <h2>Аромат — це більше, ніж просто деталь</h2>
+      <p>Це настрій, спогад і маленька частина тебе. Обирай аромат, який відображає саме тебе.</p>
+      <span class="about-signature">VELORA</span>
+    </div>
+  </section>
+</main>
 
-          <div class="detail-note">
-            Наявність та остаточну вартість замовлення підтверджує продавець.
-          </div>
-        </div>
+<footer class="site-footer">
+  <a class="logo footer-logo" href="#">VELORA<span>.</span></a>
+  <p>FRAGRANCE CONNECTION</p>
+  <div class="footer-links">
+    <a id="telegramLink" href="#" target="_blank" rel="noopener">Telegram</a>
+    <a id="instagramLink" href="#" target="_blank" rel="noopener">Instagram</a>
+  </div>
+  <small>© 2026 VELORA. Усі права захищені.</small>
+</footer>
+
+<!-- Деталі аромату -->
+<div class="overlay" id="productOverlay">
+  <section class="detail-modal">
+    <button class="close-button" id="closeProduct" aria-label="Закрити">×</button>
+    <div class="detail-layout">
+      <div class="detail-photo-wrap">
+        <img id="detailImage" src="" alt="">
+      </div>
+      <div class="detail-info">
+        <span class="detail-brand" id="detailBrand"></span>
+        <h2 id="detailName"></h2>
+        <p class="detail-description" id="detailDescription"></p>
+        <div class="detail-price" id="detailPrice"></div>
+        <span class="field-label">ОБЕРІТЬ ОБ'ЄМ</span>
+        <div class="volume-options" id="volumeOptions"></div>
+        <button class="primary-button" id="addToCart">Додати до кошика</button>
+        <p class="detail-note">Вартість змінюється залежно від обраного об'єму</p>
+        <div class="detail-thumbnails" id="detailThumbnails" hidden></div>
       </div>
     </div>
-  </div>
+  </section>
+</div>
 
-  <!-- Кошик -->
-  <div class="overlay" id="cartOverlay">
-    <aside class="cart-drawer">
-      <div class="drawer-header">
-        <h2>Ваш кошик</h2>
-        <button class="close-button" id="closeCart">×</button>
-      </div>
-      <div class="cart-items" id="cartItems"></div>
-      <div class="cart-footer">
-        <div class="cart-total">
-          <span>Орієнтовна сума</span>
-          <strong id="cartTotal">0 ₴</strong>
-        </div>
-        <button class="primary-button" id="checkoutButton">Оформити замовлення</button>
-      </div>
-    </aside>
-  </div>
-
-  <!-- Оформлення -->
-  <div class="overlay" id="orderOverlay">
-    <div class="order-modal">
-      <button class="close-button" id="closeOrder">×</button>
-      <span class="eyebrow">VELORA BOUTIQUE</span>
-      <h2>Оформлення замовлення</h2>
-      <p>Заповніть дані, щоб надіслати замовлення.</p>
-
-      <form id="orderForm">
-        <label>Ваше ім'я
-          <input name="name" required placeholder="Ім'я">
-        </label>
-        <label>Номер телефону
-          <input name="phone" type="tel" required placeholder="+380">
-        </label>
-        <label>Коментар до замовлення
-          <textarea name="comment" placeholder="За бажанням"></textarea>
-        </label>
-        <button class="primary-button" type="submit">Надіслати замовлення</button>
-      </form>
+<!-- Кошик -->
+<div class="overlay" id="cartOverlay">
+  <aside class="side-panel">
+    <div class="panel-heading">
+      <h2>Ваш кошик</h2>
+      <button class="close-button" id="closeCart" aria-label="Закрити">×</button>
     </div>
-  </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-bottom">
+      <div class="total-row">
+        <span>Разом</span>
+        <strong id="cartTotal">0 ₴</strong>
+      </div>
+      <button class="primary-button" id="checkoutButton">Оформити замовлення</button>
+    </div>
+  </aside>
+</div>
 
-  <script src="script.js"></script>
+<!-- Оформлення замовлення -->
+<div class="overlay" id="orderOverlay">
+  <section class="order-modal">
+    <button class="close-button" id="closeOrder" aria-label="Закрити">×</button>
+    <span class="eyebrow">VELORA</span>
+    <h2>Оформлення замовлення</h2>
+    <p class="order-intro">Залиште контактні дані, щоб ми могли зв'язатися з вами</p>
+    <form id="orderForm">
+      <label for="customerName">Ваше ім'я</label>
+      <input id="customerName" name="name" type="text" placeholder="Ім'я" required>
+      <label for="customerPhone">Номер телефону</label>
+      <input id="customerPhone" name="phone" type="tel" placeholder="+380..." required>
+      <label for="customerComment">Коментар до замовлення</label>
+      <textarea id="customerComment" name="comment" rows="3" placeholder="За бажанням"></textarea>
+      <button class="primary-button" type="submit">Надіслати замовлення</button>
+    </form>
+  </section>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
